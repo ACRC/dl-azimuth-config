@@ -1,0 +1,38 @@
+# Workaround broken python dependency issue until 
+# https://github.com/stackhpc/ansible-slurm-appliance/pull/304 
+# is merged along with corresponding update to caas-slurm-appliance
+azimuth_caas_stackhpc_slurm_appliance_git_version: 83575461dbc29532c3922871fd8ea89d8053807b
+
+# harbor_enabled: false
+
+# NOTE: It seems that latest k8s + Ubuntu Jammy images don't work with Harbor
+#       Not yet figured out why, but for now use focal images instead until
+#       we get a chance to debug this further.
+community_images_azimuth_images: |-
+  {
+    {% for source_key, image in community_images_azimuth_images_manifest.items() %}
+    {% if "kubernetes_version" in image and source_key.endswith("-focal") %}
+      {% set kube_version = image.kubernetes_version.removeprefix("v") %}
+      {% set kube_series = kube_version.split(".")[:-1] | join("_") %}
+      {% set dest_key = "kube_" ~ kube_series %}
+    {% elif source_key == "jupyter-repo2docker" %}
+      {% set dest_key = "repo2docker" %}
+    {% elif source_key == "ubuntu-desktop" %}
+      {% set dest_key = "workstation" %}
+    {% else %}
+      {% set dest_key = None %}
+    {% endif %}
+    {% if dest_key %}
+    "{{ dest_key }}": {
+      "name": "{{ image.name }}",
+      "source_url": "{{ image.url }}",
+      "checksum": "{{ image.checksum }}",
+      "source_disk_format": "qcow2",
+      "container_format": "bare",
+      {% if "kubernetes_version" in image %}
+      "kubernetes_version": "{{ image.kubernetes_version }}",
+      {% endif %}
+    },
+    {% endif %}
+    {% endfor %}
+  }
