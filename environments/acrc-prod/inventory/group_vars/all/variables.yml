@@ -1,0 +1,80 @@
+
+#####
+# Configuration for the seed node
+#####
+
+# The ID of the external network
+infra_external_network_id: ee29b0e7-d381-4d5f-a940-c86e39da34dc
+
+# The ID of the flavor to use for the K3S node
+# A flavor with at least 2 CPUs and 8GB RAM is recommended
+infra_flavor_id: 1d5df89f-e753-45de-8717-719a325243c5 # == m1.large
+
+
+#####
+# Configuration for the HA cluster
+#####
+
+# The name of the flavor to use for control plane nodes
+# A flavor with at least 2 CPUs, 8GB RAM and 100GB root disk is recommended
+capi_cluster_control_plane_flavor: m1.xlarge
+
+# The name of the flavor to use for worker nodes
+# A flavor with at least 4 CPUs, 16GB RAM and 100GB root disk is recommended
+capi_cluster_worker_flavor: m1.xlarge
+
+# The number of worker nodes
+capi_cluster_worker_count: 3
+
+# The floating IP to which to wildcard DNS entry has been assigned
+# This IP must be pre-assigned to the target OpenStack project
+capi_cluster_addons_ingress_load_balancer_ip: 10.129.31.71
+
+
+#####
+# Ingress configuration
+#####
+
+# Disable TLS for now until we arrange a DNS entry + TLS cert
+ingress_tls_enabled: false
+
+# Indicates if Harbor should be enabled to provide pull-through caches
+harbor_enabled: no
+
+# Cloud uses Octavia OVN provider
+openstack_loadbalancer_provider: ovn
+capi_cluster_addons_openstack_loadbalancer_method: SOURCE_IP_PORT
+azimuth_capi_operator_capi_helm_openstack_loadbalancer_method: SOURCE_IP_PORT
+
+
+# The name of the current cloud
+azimuth_current_cloud_name: acrc-dl
+# The label for the current cloud
+azimuth_current_cloud_label: "ACRC Digital Lab"
+
+
+#####
+# Configuration for CaaS appliances
+#####
+
+# The name of a flavor to use for Slurm login nodes
+#   A flavor with at least 2 CPUs and 4GB RAM should be used
+azimuth_caas_stackhpc_slurm_appliance_login_flavor_name: m1.medium
+
+# The name of a flavor to use for Slurm control nodes
+#   A flavor with at least 2 CPUs and 4GB RAM should be used
+azimuth_caas_stackhpc_slurm_appliance_control_flavor_name: m1.medium
+
+
+
+#####
+# Configuration for monitoring stack
+#####
+
+# Loki volume fills up in ~1 week with defaults so reduce rentention time and bump storage capacity
+capi_cluster_addons_monitoring_loki_volume_size: 20Gi
+capi_cluster_addons_monitoring_loki_retention: 336h # == 14 days    
+
+# Prometheus retention and volume size
+capi_cluster_addons_monitoring_prometheus_retention: 30d
+capi_cluster_addons_monitoring_prometheus_volume_size: 20Gi
