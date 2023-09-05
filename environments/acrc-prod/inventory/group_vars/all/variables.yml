@@ -78,3 +78,8 @@ capi_cluster_addons_monitoring_loki_retention: 336h # == 14 days
 # Prometheus retention and volume size
 capi_cluster_addons_monitoring_prometheus_retention: 30d
 capi_cluster_addons_monitoring_prometheus_volume_size: 20Gi
+
+
+# Work around seed network MTU issue 
+# (possibly related to disabled DVR)
+infra_network_mtu: 1500
