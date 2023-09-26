@@ -51,7 +51,10 @@ azimuth_capi_operator_capi_helm_openstack_loadbalancer_method: SOURCE_IP_PORT
 azimuth_current_cloud_name: acrc-dl
 # The label for the current cloud
 azimuth_current_cloud_label: "ACRC Digital Lab"
-
+# Base domain used for wildcard DNS entry for Azimuth
+# TODO: Uncomment once this domain is resolvable from cloud VMs
+# (requires updating DNS config / deploying Designate)
+# ingress_base_domain: azimuth.dl.acrc.bris.ac.uk
 
 #####
 # Configuration for CaaS appliances
