@@ -1,4 +1,0 @@
-# Workaround broken python dependency issue until 
-# https://github.com/stackhpc/ansible-slurm-appliance/pull/304 
-# is merged along with corresponding update to caas-slurm-appliance
-azimuth_caas_stackhpc_slurm_appliance_git_version: 83575461dbc29532c3922871fd8ea89d8053807b
