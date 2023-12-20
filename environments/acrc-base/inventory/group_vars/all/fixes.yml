@@ -1,0 +1,4 @@
+# Temporary CaaS workaround
+azimuth_caas_stackhpc_slurm_appliance_extra_vars_overrides:
+  block_device_prefix: vd
+
