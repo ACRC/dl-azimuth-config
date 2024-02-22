@@ -3,8 +3,6 @@
 # Terraform remote state config
 #####
 
-# NOTE(scott): Used Leafcloud object store here since SMS object 
-# store was down at the time of writing and is generally less reliable
 terraform_backend_type: s3
 
 # The endpoint of the object store
