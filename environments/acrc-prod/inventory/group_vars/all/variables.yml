@@ -57,20 +57,6 @@ azimuth_current_cloud_label: "ACRC Digital Lab"
 # ingress_base_domain: azimuth.dl.acrc.bris.ac.uk
 
 #####
-# Configuration for CaaS appliances
-#####
-
-# The name of a flavor to use for Slurm login nodes
-#   A flavor with at least 2 CPUs and 4GB RAM should be used
-azimuth_caas_stackhpc_slurm_appliance_login_flavor_name: m1.medium
-
-# The name of a flavor to use for Slurm control nodes
-#   A flavor with at least 2 CPUs and 4GB RAM should be used
-azimuth_caas_stackhpc_slurm_appliance_control_flavor_name: m1.medium
-
-
-
-#####
 # Configuration for monitoring stack
 #####
 
@@ -85,4 +71,5 @@ capi_cluster_addons_monitoring_prometheus_volume_size: 50Gi
 
 # Work around seed network MTU issue 
 # (possibly related to disabled DVR)
+# NOTE: this seems to break newly-created networks. Either caused by the Antelope upgrade or the con3/con4 swapover.
 infra_network_mtu: 1500
