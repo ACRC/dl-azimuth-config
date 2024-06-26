@@ -1,7 +1,4 @@
 
-# Pin to bugfix for Machines tab 
-azimuth_chart_version: "0.9.1-dev.0.fix-machine-list-when-flavor-is-deleted.1"
-
 #####
 # Configuration for the seed node
 #####
@@ -14,22 +11,6 @@ infra_network_id: 6bc3f2a7-ed46-474f-bcf9-03de97333b12
 # The ID of the flavor to use for the K3S node
 # A flavor with at least 2 CPUs and 8GB RAM is recommended
 infra_flavor_id: 1478011e-ed51-43a0-87dc-b7343fdb6756 # hpc.v1.8cpu
-
-
-#####
-# Configuration for the HA cluster
-#####
-
-# The name of the flavor to use for control plane nodes
-# A flavor with at least 2 CPUs, 8GB RAM and 100GB root disk is recommended
-
-# The name of the flavor to use for worker nodes
-# A flavor with at least 4 CPUs, 16GB RAM and 100GB root disk is recommended
-
-# The number of worker nodes
-
-# The floating IP to which to wildcard DNS entry has been assigned
-# This IP must be pre-assigned to the target OpenStack project
 
 
 #####
@@ -49,32 +30,3 @@ harbor_enabled: no
 azimuth_current_cloud_name: demo-acrc-dl
 # The label for the current cloud
 azimuth_current_cloud_label: "ACRC Digital Lab - DEMO"
-# Base domain used for wildcard DNS entry for Azimuth
-# TODO: Uncomment once this domain is resolvable from cloud VMs
-# (requires updating DNS config / deploying Designate)
-# ingress_base_domain: azimuth.dl.acrc.bris.ac.uk
-
-#####
-# Configuration for CaaS appliances
-#####
-
-# The name of a flavor to use for Slurm login nodes
-#   A flavor with at least 2 CPUs and 4GB RAM should be used
-
-# The name of a flavor to use for Slurm control nodes
-#   A flavor with at least 2 CPUs and 4GB RAM should be used
-
-
-
-#####
-# Configuration for monitoring stack
-#####
-
-# Loki volume fills up in ~1 week with defaults so reduce rentention time and bump storage capacity
-
-# Prometheus retention and volume size
-
-
-# Work around seed network MTU issue 
-# (possibly related to disabled DVR)
-# infra_network_mtu: 1500
