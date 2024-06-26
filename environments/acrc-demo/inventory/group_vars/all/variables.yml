@@ -1,2 +1,32 @@
 
-# Add customisations here as required
+#####
+# Configuration for the seed node
+#####
+
+# The ID of the external network
+#infra_external_network_id: ee29b0e7-d381-4d5f-a940-c86e39da34dc
+
+infra_network_id: 6bc3f2a7-ed46-474f-bcf9-03de97333b12
+
+# The ID of the flavor to use for the K3S node
+# A flavor with at least 2 CPUs and 8GB RAM is recommended
+infra_flavor_id: 1478011e-ed51-43a0-87dc-b7343fdb6756 # hpc.v1.8cpu
+
+
+#####
+# Ingress configuration
+#####
+
+# Disable TLS for now until we arrange a DNS entry + TLS cert
+ingress_tls_enabled: false
+
+# Indicates if Harbor should be enabled to provide pull-through caches
+harbor_enabled: no
+
+# Cloud uses Octavia OVN provider
+
+
+# The name of the current cloud
+azimuth_current_cloud_name: demo-acrc-dl
+# The label for the current cloud
+azimuth_current_cloud_label: "ACRC Digital Lab - DEMO"
