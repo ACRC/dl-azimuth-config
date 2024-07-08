@@ -62,14 +62,17 @@ azimuth_current_cloud_label: "ACRC Digital Lab"
 
 # Loki volume fills up in ~1 week with defaults so reduce rentention time and bump storage capacity
 capi_cluster_addons_monitoring_loki_volume_size: 20Gi
-capi_cluster_addons_monitoring_loki_retention: 336h # == 14 days    
+capi_cluster_addons_monitoring_loki_retention: 336h # == 14 days
 
 # Prometheus retention and volume size
 capi_cluster_addons_monitoring_prometheus_retention: 30d
 capi_cluster_addons_monitoring_prometheus_volume_size: 50Gi
 
-
-# Work around seed network MTU issue 
+# Work around seed network MTU issue
 # (possibly related to disabled DVR)
 # NOTE: this seems to break newly-created networks. Either caused by the Antelope upgrade or the con3/con4 swapover.
 infra_network_mtu: 1500
+
+# NOTE(sd109 - 2024-07-08): Latest version of Keycloak seems to require more
+# storage space so try bumping from 8GB to 20GB for now.
+keycloak_database_data_volume_size: 20Gi
