@@ -76,3 +76,12 @@ infra_network_mtu: 1500
 # NOTE(sd109 - 2024-07-08): Latest version of Keycloak seems to require more
 # storage space so try bumping from 8GB to 20GB for now.
 keycloak_database_data_volume_size: 20Gi
+
+# Temporary fix for Keycloak WAL shipping issue
+# NOTE(scott): Remove this once the following PR is part of an Azimuth release:
+# https://github.com/stackhpc/ansible-collection-azimuth-ops/pull/570
+pgo_database_spec_overrides:
+  image: registry.developers.crunchydata.com/crunchydata/crunchy-postgres:ubi8-14.11-0
+  backups:
+    pgbackrest:
+      image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbackrest:ubi8-2.49-0
