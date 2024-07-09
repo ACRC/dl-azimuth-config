@@ -75,7 +75,7 @@ infra_network_mtu: 1500
 
 # NOTE(sd109 - 2024-07-08): Latest version of Keycloak seems to require more
 # storage space so try bumping from 8GB to 20GB for now.
-keycloak_database_data_volume_size: 20Gi
+keycloak_database_data_volume_size: 21Gi
 
 # Temporary fix for Keycloak WAL shipping issue
 # NOTE(scott): Remove this once the following PR is part of an Azimuth release:
